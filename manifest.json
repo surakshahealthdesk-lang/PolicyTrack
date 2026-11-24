@@ -1,0 +1,14 @@
+{
+  "name": "PolicyTrack",
+  "short_name": "PolicyTrack",
+  "description": "A calm, clear workspace for managing insurance clients, policies, and follow-ups.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0F5132",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

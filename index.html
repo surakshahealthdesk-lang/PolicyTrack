@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0F5132" />
+    <meta name="description" content="A calm, clear workspace for managing insurance clients, policies, and follow-ups." />
+    <title>PolicyTrack — Your client workspace</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#customers" aria-label="PolicyTrack home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 4.5 33 9v9.7c0 8.3-5.4 14.5-13 17-7.6-2.5-13-8.7-13-17V9l13-4.5Z"/><path d="m13.2 20.2 4.4 4.3 9.2-9.3"/></svg></span>
+          <span class="brand-copy"><strong>PolicyTrack</strong><small>YOUR CLIENT WORKSPACE</small></span>
+        </a>
+        <div class="nav-caption">WORKSPACE</div>
+        <nav class="primary-nav">
+          <button class="nav-link active" data-page="customers"><span class="nav-icon">⌂</span><span>Customers</span><span class="nav-count" id="customer-nav-count">0</span></button>
+          <button class="nav-link" data-page="reminders"><span class="nav-icon">◷</span><span>Reminders</span><span class="nav-count gold-count" id="reminder-nav-count">0</span></button>
+          <button class="nav-link" data-page="followups"><span class="nav-icon">✓</span><span>Follow-ups</span><span class="nav-count" id="followup-nav-count">0</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-note"><span class="note-star">✦</span><strong>Care that continues.</strong><p>Every conversation is a chance to make protection feel personal.</p></div>
+          <div class="local-status"><span class="status-dot"></span><span>Your workspace is ready</span></div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark small-mark"><svg viewBox="0 0 40 40"><path d="M20 4.5 33 9v9.7c0 8.3-5.4 14.5-13 17-7.6-2.5-13-8.7-13-17V9l13-4.5Z"/><path d="m13.2 20.2 4.4 4.3 9.2-9.3"/></svg></span><strong>PolicyTrack</strong></div>
+          <div class="topbar-context"><span class="eyebrow">YOUR INSURANCE PRACTICE</span><span class="topbar-date" id="today-label"></span></div>
+          <div class="topbar-actions"><span class="secure-pill"><span class="secure-dot"></span>Private workspace</span><button class="icon-button notification-button" id="notify-button" type="button" aria-label="Enable notifications" title="Enable notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="notification-indicator"></span></button><button class="avatar" type="button" title="Single-agent workspace">A</button></div>
+        </header>
+        <div class="page-content" id="page-content" aria-live="polite"></div>
+      </main>
+    </div>
+    <nav class="mobile-nav" aria-label="Main navigation">
+      <button class="mobile-nav-link active" data-page="customers"><span>⌂</span><small>Customers</small></button>
+      <button class="mobile-nav-link" data-page="reminders"><span>◷</span><small>Reminders</small><i id="mobile-reminder-dot"></i></button>
+      <button class="mobile-nav-link" data-page="followups"><span>✓</span><small>Follow-ups</small></button>
+    </nav>
+    <dialog class="modal" id="form-modal" aria-labelledby="modal-title"><div class="modal-panel"><div class="modal-header"><div><span class="eyebrow" id="modal-kicker">CLIENT DETAILS</span><h2 id="modal-title">Add customer</h2></div><button class="icon-button close-modal" type="button" aria-label="Close dialog">×</button></div><form id="entity-form"><div class="modal-fields" id="modal-fields"></div><div class="modal-footer"><button class="button button-quiet close-modal" type="button">Cancel</button><button class="button button-primary" type="submit"><span id="submit-label">Save customer</span><span aria-hidden="true">↗</span></button></div></form></div></dialog>
+    <dialog class="modal confirm-modal" id="confirm-modal"><div class="modal-panel"><span class="confirm-icon">!</span><h2 id="confirm-title">Delete this customer?</h2><p id="confirm-message">This action cannot be undone.</p><div class="modal-footer"><button class="button button-quiet close-confirm" type="button">Cancel</button><button class="button button-danger" id="confirm-delete" type="button">Delete</button></div></div></dialog>
+    <input id="backup-file" type="file" accept=".json,application/json" hidden aria-label="Choose a PolicyTrack backup JSON file" />
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
